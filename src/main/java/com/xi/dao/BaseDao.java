@@ -55,7 +55,7 @@ public class BaseDao {
 
         }
 
-        resultSet = preparedStatement.executeQuery(sql);
+        resultSet = preparedStatement.executeQuery();
 
         return resultSet;
 
