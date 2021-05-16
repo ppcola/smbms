@@ -1,67 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/jsp/common/head.jsp"%>
+<%@include file="common/head.jsp"%>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 
 <div class="right">
         <div class="location">
             <strong>你现在所在的位置是:</strong>
-            <span>订单管理页面 >> 订单添加页面</span>
+            <span>订单管理页面 >> 订单修改页面</span>
         </div>
         <div class="providerAdd">
-          <form id="billForm" name="billForm" method="post" action="${pageContext.request.contextPath }/sys/bill/modifysave.html">
-				<input type="hidden" name="id" value="${bill.id }">
-                <!--div的class 为error是验证错误，ok是验证成功-->
-                <div class="">
+          <s:form id="billForm" name="billForm" method="post" action="${pageContext.request.contextPath }/bill/update" modelAttribute="bill">
+               <s:hidden path="id"/>
+                <div>
                     <label for="billCode">订单编码：</label>
-                    <input type="text" name="billCode" id="billCode" value="${bill.billCode }" readonly="readonly"> 
+                    <s:input path="billcode"/> 
                 </div>
                 <div>
                     <label for="productName">商品名称：</label>
-                    <input type="text" name="productName" id="productName" value="${bill.productName }"> 
+                    <s:input path="productname"/> 
 					<font color="red"></font>
                 </div>
                 <div>
                     <label for="productUnit">商品单位：</label>
-                    <input type="text" name="productUnit" id="productUnit" value="${bill.productUnit }"> 
+                    <s:input path="productunit"/>
 					<font color="red"></font>
                 </div>
                 <div>
                     <label for="productCount">商品数量：</label>
-                    <input type="text" name="productCount" id="productCount" value="${bill.productCount }"> 
+                    <s:input path="productcount"/>
 					<font color="red"></font>
                 </div>
                 <div>
                     <label for="totalPrice">总金额：</label>
-                    <input type="text" name="totalPrice" id="totalPrice" value="${bill.totalPrice }"> 
+                    <s:input path="totalprice"/>
 					<font color="red"></font>
                 </div>
                 <div>
                     <label for="providerId">供应商：</label>
-                    <input type="hidden" value="${bill.providerId }" id="pid" />
-					<select name="providerId" id="providerId">
-		        	</select>
+                    <!-- <input type="hidden" value="" id="pid" /> -->
+					<s:select path="providerid" items="${proids }" itemValue="id" itemLabel="proname">
+		        	</s:select>
 					<font color="red"></font>
                 </div>
                 <div>
                     <label >是否付款：</label>
-                    <c:if test="${bill.isPayment == 1 }">
-						<input type="radio" name="isPayment" value="1" checked="checked">未付款
-						<input type="radio" name="isPayment" value="2" >已付款
-					</c:if>
-					<c:if test="${bill.isPayment == 2 }">
-						<input type="radio" name="isPayment" value="1">未付款
-						<input type="radio" name="isPayment" value="2" checked="checked">已付款
-					</c:if>
+						<s:radiobutton path="ispayment" value="1"/>未付款
+                   	    <s:radiobutton path="ispayment" value="2"/>已付款
                 </div>
                 <div class="providerAddBtn">
-                  <input type="button" name="save" id="save" value="保存">
-				  <input type="button" id="back" name="back" value="返回" >
+                  <input type="submit" name="save" id="save" value="保存">
+				  <input type="button" id="back" name="back" onclick="javascript:window.history.back(-1);" value="返回"/>
               	</div>
-            </form>
+            </s:form>
         </div>
-
     </div>
 </section>
-
-<%@include file="/WEB-INF/jsp/common/foot.jsp" %>
-<script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/billmodify.js"></script>
+<%@include file="common/foot.jsp" %>

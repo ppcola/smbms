@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 
         User user = userService.login(userCode, userPassword);  //已经把登录的人查询出来了
 
-        if(user !=null){    //数据库中有此人，可以登录
+        if(user != null&&user.getUserPassword().equals(userPassword)){    //数据库中有此人，可以登录
 
             req.getSession().setAttribute(Constants.USER_SESSION,user); // 将用户的信息，放到session中;
 
@@ -48,7 +48,6 @@ public class LoginServlet extends HttpServlet {
     }
 
 
-    @Override
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
