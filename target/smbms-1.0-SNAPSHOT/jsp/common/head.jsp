@@ -15,7 +15,7 @@
         <h1>聚旺福超市订单管理系统</h1>
         <div class="publicHeaderR">
             <p><span>下午好！</span><span style="color: #fff21b">${user.username }</span> , 欢迎你！</p>
-            <a href="javascript:if(confirm('您真的要退出吗？')){location.href='${pageContext.request.contextPath}/user/logout'}">退出</a>
+            <a href="javascript:if(confirm('您真的要退出吗？')){location.href='${pageContext.request.contextPath}/jsp/logout.do'}">退出</a>
         </div>
     </header>
 <!--时间-->
@@ -33,7 +33,7 @@
               <li><a href="${pageContext.request.contextPath}/provider/providerlist">供应商管理</a></li>
               <li><a href="${pageContext.request.contextPath}/user/userlist">用户管理</a></li>
               <li><a href="${pageContext.request.contextPath}/user/pwdModify">密码修改</a></li>
-              <li><a href="javascript:if(confirm('您真的要退出吗？')){location.href='${pageContext.request.contextPath}/user/logout'}">退出系统</a></li>
+              <li><a href="javascript:if(confirm('您真的要退出吗？')){location.href='${pageContext.request.contextPath}/jsp/logout.do'}">退出系统</a></li>
              </ul>
          </nav>
      </div>
